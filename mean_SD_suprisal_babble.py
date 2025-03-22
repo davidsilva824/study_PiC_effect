@@ -6,7 +6,6 @@ df = pd.read_csv("results_babble.csv")
 # Step 1: Filter Regular Plural and Irregular Plural
 regular_plural = df[df['Category'] == 'Regular Plural'].reset_index(drop=True)
 irregular_plural = df[df['Category'] == 'Irregular Plural'].reset_index(drop=True)
-pluralia_tantum = df[df['Category'] == 'Pluralia Tantum'].reset_index(drop=True)
 
 # Step 2–3: Alternating rows — even index = singular, odd index = plural
 singular_rows_reg = regular_plural.iloc[::2]
@@ -44,9 +43,8 @@ stats_irreg = {
     ]
 }
 
-
 result_df_irreg = pd.DataFrame(stats_irreg)
-print(f"\n\n Pluralia Tantum \n\n {result_df_irreg}")
+print(f"\n\n Irregular Plural \n\n {result_df_irreg}")
 
 # Combine both results into one DataFrame
 final_result_df = pd.concat([result_df_reg, result_df_irreg], ignore_index=True)
