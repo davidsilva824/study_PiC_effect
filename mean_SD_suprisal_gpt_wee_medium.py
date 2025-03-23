@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV
-df = pd.read_csv("results_gpt_wee.csv")
+df = pd.read_csv("results_gpt_wee_medium.csv")
 
 # Step 1: Filter Regular Plural and Irregular Plural
 regular_plural = df[df['Category'] == 'Regular Plural'].reset_index(drop=True)
@@ -50,6 +50,6 @@ print(f"\n\n Irregular Plural \n\n {result_df_irreg}")
 final_result_df = pd.concat([result_df_reg, result_df_irreg], ignore_index=True)
 
 # Step 5: Save results to a CSV file
-final_result_df.to_csv("mean_SD_gpt_wee.csv", index=False)
+final_result_df.to_csv("mean_SD_gpt_wee_medium.csv", index=False)
 
-print("\nResults saved to 'mean_SD_pt_wee.csv'.")
+print("\nResults saved to 'mean_SD_pt_wee_medium.csv'.")

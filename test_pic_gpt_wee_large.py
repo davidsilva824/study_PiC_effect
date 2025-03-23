@@ -8,7 +8,7 @@ irregular_non_head_file = "list_non_head_irregular.csv"
 pluralia_tantum_file = "list_non_head_pluralia_tantum.csv"
 
 # Load model
-m = AutoHuggingFaceModel.from_pretrained('bbunzeck/gpt-wee-medium')
+m = AutoHuggingFaceModel.from_pretrained('bbunzeck/gpt-wee-large')
 m.to('cuda')  # Optionally move model to GPU
 
 # Load words
@@ -60,8 +60,8 @@ compound_combination("Regular Plural", regular_non_heads)
 compound_combination("Irregular Plural", irregular_non_heads)
 compound_combination("Pluralia Tantum", pluralia_tantum)
 
-output_file = "results_gpt_wee.csv"
+output_file = "results_gpt_wee_large.csv"
 df = pd.DataFrame(data, columns=["Category", "Non-Head", "Head", "Surprisal Non-head", "Surprisal head"])
 df.to_csv(output_file, index=False)
 
-print('\n results in results_gpt_wee.csv \n')
+print('\n\n results in results_gpt_wee_large.csv')

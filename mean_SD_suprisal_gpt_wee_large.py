@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV
-df = pd.read_csv("results_babble.csv")
+df = pd.read_csv("results_gpt_wee_large.csv")
 
 # Step 1: Filter Regular Plural and Irregular Plural
 regular_plural = df[df['Category'] == 'Regular Plural'].reset_index(drop=True)
@@ -26,7 +26,9 @@ stats_reg = {
         plural_rows_reg["Surprisal head"].std()
     ]
 }
+
 result_df_reg = pd.DataFrame(stats_reg)
+print(f"\n\n Regular Plural \n\n {result_df_reg}")
 
 # Step 4: Compute stats for Irregular Plural
 stats_irreg = {
@@ -40,20 +42,14 @@ stats_irreg = {
         plural_rows_irreg["Surprisal head"].std()
     ]
 }
+
 result_df_irreg = pd.DataFrame(stats_irreg)
+print(f"\n\n Irregular Plural \n\n {result_df_irreg}")
 
-# Step 4b: Mean difference (Plural - Singular)
-mean_diff_reg = (plural_rows_reg["Surprisal head"] - singular_rows_reg["Surprisal head"]).mean()
-mean_diff_irreg = (plural_rows_irreg["Surprisal head"] - singular_rows_irreg["Surprisal head"]).mean()
+# Combine both results into one DataFrame
+final_result_df = pd.concat([result_df_reg, result_df_irreg], ignore_index=True)
 
-# Step 5: Save all results to txt
-with open("plural_results_babble.txt", "w") as f:
-    f.write("Regular Plural\n\n")
-    f.write(result_df_reg.to_string(index=False))
-    f.write(f"\n\nMean Difference (Plural - Singular): {mean_diff_reg:.4f}\n\n")
+# Step 5: Save results to a CSV file
+final_result_df.to_csv("mean_SD_gpt_wee_large.csv", index=False)
 
-    f.write("Irregular Plural\n\n")
-    f.write(result_df_irreg.to_string(index=False))
-    f.write(f"\n\nMean Difference (Plural - Singular): {mean_diff_irreg:.4f}\n")
-
-print("Results saved to 'plural_results_babble.txt'.")
+print("\nResults saved to 'mean_SD_pt_wee_large.csv'.")

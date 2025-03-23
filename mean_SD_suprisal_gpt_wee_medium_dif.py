@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV
-df = pd.read_csv("results_gpt_wee.csv")
+df = pd.read_csv("results_gpt_wee_medium.csv")
 
 # Filter Regular and Irregular Plural
 regular_plural = df[df['Category'] == 'Regular Plural'].reset_index(drop=True)
@@ -29,4 +29,6 @@ result_df_diff = pd.DataFrame(diff_stats)
 print(result_df_diff)
 
 # Save to file
-result_df_diff.to_csv("mean_SD_gpt_wee_dif.csv", index=False)
+result_df_diff.to_csv("mean_SD_gpt_wee_medium_dif.csv", index=False)
+
+print("\nResults saved to 'mean_SD_pt_wee_medium_dif.csv'.")
