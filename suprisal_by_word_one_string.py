@@ -1,10 +1,11 @@
 import pandas as pd
 from surprisal import AutoHuggingFaceModel
 
-sentences = ["this monster is a rat eater"]
+sentences = ["a bird was flying in the sky"]
 
+model = 'phonemetransformers/GPT2-85M-BPE-TXT'
 # Load the model
-m = AutoHuggingFaceModel.from_pretrained('phonemetransformers/GPT2-85M-BPE-TXT')
+m = AutoHuggingFaceModel.from_pretrained(model,  model_class="causal" )
 m.to('cuda')  # Optionally move your model to GPU
 
 # Process sentences
