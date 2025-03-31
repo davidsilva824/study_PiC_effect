@@ -1,6 +1,6 @@
-This testing pipeline is part of the masters dissertation: "Exploring Grammatical Constraints with Large Language Models". 
+This testing pipeline is part of the masters dissertation: "Exploring Grammatical Constraints with Large Language Models" by David Silva.
 
-It tests PiC effect uses the surprisal package: https://github.com/aalok-sathe/surprisal/tree/main 
+It tests PiC effect and uses the surprisal package: https://github.com/aalok-sathe/surprisal/tree/main 
 
 Run 'test_pic_model' files to obtain the results.
 
