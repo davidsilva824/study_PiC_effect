@@ -1,6 +1,7 @@
 This testing pipeline is part of the masters dissertation: "Exploring Grammatical Constraints with Large Language Models" by David Silva.
 
 It tests for the Plurals in Compounds effect and uses the surprisal package: https://github.com/aalok-sathe/surprisal/tree/main 
+
 Install all requested packages using pip install.
 
 Run 'test_pic_model.py' files to obtain the results for each model.
