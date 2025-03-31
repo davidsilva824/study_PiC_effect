@@ -2,7 +2,7 @@ This testing pipeline is part of the masters dissertation: "Exploring Grammatica
 
 It tests for the Plurals in Compounds effect and uses the surprisal package: https://github.com/aalok-sathe/surprisal/tree/main 
 
-Run 'test_pic_model' files to obtain the results.
+Run 'test_pic_model.py' files to obtain the results for each model.
 
 Run 'mean_SD_suprisal_model' files to obtain the statistical analysis.
 
