@@ -1,4 +1,6 @@
 import pandas as pd
+import scipy.stats as stats
+import numpy as np
 
 # Load the CSV
 df = pd.read_csv("results_gpt_wee_medium.csv")
@@ -18,17 +20,29 @@ plural_irreg = irregular_plural.iloc[1::2].reset_index(drop=True)
 diff_reg = plural_reg["Surprisal head"] - singular_reg["Surprisal head"]
 diff_irreg = plural_irreg["Surprisal head"] - singular_irreg["Surprisal head"]
 
+# Function to compute 95% CI
+def compute_95ci(data):
+    mean = np.mean(data)
+    sem = stats.sem(data)
+    ci = stats.t.interval(0.95, len(data)-1, loc=mean, scale=sem)
+    return ci
+
+ci_reg = compute_95ci(diff_reg)
+ci_irreg = compute_95ci(diff_irreg)
+
 # Compute stats
 diff_stats = {
     "Category": ["Regular Plural", "Irregular Plural"],
     "Mean_Difference": [diff_reg.mean(), diff_irreg.mean()],
-    "Std_Difference": [diff_reg.std(), diff_irreg.std()]
+    "Std_Difference": [diff_reg.std(), diff_irreg.std()],
+    "CI_95_Lower": [ci_reg[0], ci_irreg[0]],
+    "CI_95_Upper": [ci_reg[1], ci_irreg[1]]
 }
 
 result_df_diff = pd.DataFrame(diff_stats)
 print(result_df_diff)
 
 # Save to file
-result_df_diff.to_csv("mean_SD_gpt_wee_medium_dif.csv", index=False)
+result_df_diff.to_csv("mean_SD_CI95_gpt_wee_medium_dif.csv", index=False)
 
-print("\nResults saved to 'mean_SD_pt_wee_medium_dif.csv'.")
+print("\nResults saved to 'mean_SD_CI95_gpt_wee_medium_dif.csv'.")
