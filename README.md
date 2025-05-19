@@ -7,6 +7,7 @@ Install all requested packages using pip install.
 
 Run 'test_pic_model.py' files to obtain the results for each model.
 
-Run 'mean_SD_suprisal_model' files to obtain the mean and standard deviation analysis.
+Run 'mean_SD_suprisal_model.py' files to obtain the mean surprisal values and standard deviation analysis.
+Run 'mean_SD_suprisal_model_dif.py' files to obtain the same statistics for the diference between plurals and singulars for regular and irregular conditions. 
 
 The lists of heads or non_heads to be tested can be seen and changed in the respective csv files: list_type.csv
